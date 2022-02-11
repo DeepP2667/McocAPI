@@ -6,6 +6,8 @@ def create_app():
     app.config['SECRET_KEY'] = SECRET_KEY
 
     from .routes.champions import champions
+    from .routes.champion_stats import champion_stats
     app.register_blueprint(champions, url_prefix='/champions')
+    app.register_blueprint(champion_stats, url_prefix='/champions')
 
     return app

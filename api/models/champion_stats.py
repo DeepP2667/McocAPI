@@ -18,16 +18,59 @@ class Stats():
         self.champ_physical_resist = None
         self.champ_crit_resist = None
 
-    def read_champ_stats(self, name, stars, rank):
+
+    def read_all_champ_stats(self, name):
 
         model.open_connection()
-        query = "SELECT champ_id from champions WHERE champ_name = %s"
+        query = "SELECT champ_id FROM champions WHERE champ_name = %s"
         model.cursor.execute(query, (name,))
         self.champ_id = model.cursor.fetchone()['champ_id']
         model.close_connection()
 
         model.open_connection()
-        query = "SELECT * FROM champ_stats WHERE champ_id = %s AND champ_stars = %s AND champ_rank = %s"
+        query = """ SELECT 
+                    champ_stars,
+                    champ_rank, 
+                    champ_prestige, 
+                    champ_HP, 
+                    champ_attack, 
+                    champ_crit_rate, 
+                    champ_crit_damage, 
+                    champ_armor, 
+                    champ_block_proficiency, 
+                    champ_energy_resist, 
+                    champ_physical_resist, 
+                    champ_crit_resist
+                    FROM champ_stats WHERE champ_id = %s
+                """
+        model.cursor.execute(query, (self.champ_id,))
+        all_stats = model.cursor.fetchall()
+        model.close_connection()
+        return all_stats
+
+    def read_specific_champ_stats(self, name, stars, rank):
+
+        model.open_connection()
+        query = "SELECT champ_id FROM champions WHERE champ_name = %s"
+        model.cursor.execute(query, (name,))
+        self.champ_id = model.cursor.fetchone()['champ_id']
+        model.close_connection()
+
+        model.open_connection()
+        query = """ SELECT 
+                    champ_stars, 
+                    champ_rank, 
+                    champ_prestige, 
+                    champ_HP, 
+                    champ_attack, 
+                    champ_crit_rate, 
+                    champ_crit_damage, 
+                    champ_armor, 
+                    champ_block_proficiency,
+                    champ_energy_resist,
+                    champ_physical_resist, 
+                    champ_crit_resist  
+                    FROM champ_stats WHERE champ_id = %s AND champ_stars = %s AND champ_rank = %s"""
         model.cursor.execute(query, (self.champ_id, stars, rank))
         champ_stats = model.cursor.fetchall()
         model.close_connection()

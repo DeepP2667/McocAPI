@@ -9,17 +9,17 @@ class Champions():
         self.offense_rank = None
         self.defense_rank = None
 
-    @staticmethod
-    def read_all_champs():
+    def read_base_champ_stats(self, name):
         model.open_connection()
 
-        query = "SELECT champ_name, champ_class, offense_rank, defense_rank FROM champions"
-        model.cursor.execute(query)
+        query = "SELECT * FROM champions WHERE champ_name = %s"
+        model.cursor.execute(query, (name,))
         stored_champs = model.cursor.fetchall()
 
         model.close_connection()
         
         return stored_champs
+
 
     def create_one_champ(self):
 
