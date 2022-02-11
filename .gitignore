@@ -8,3 +8,5 @@ champ_stats.json
 #Configs
 data_base_config.py
 flask_config.py
+
+**/__pycache__/
