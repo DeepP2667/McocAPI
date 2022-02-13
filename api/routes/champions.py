@@ -1,5 +1,4 @@
-from flask import Blueprint, jsonify
-import json
+from flask import Blueprint
 from ..helpers.convert_name import convert_name
 from ..helpers.read_names import read_api_names
 
@@ -9,14 +8,15 @@ champions = Blueprint('champions', __name__)
 
 @champions.route('/', methods=['GET'])
 def get_all_champs():
-    names = read_api_names()
-    response = {
-        "champs": names['api_champ_names'], 
+    names = list(read_api_names()['api_champ_names'].values())
+    response_champs = {
+        "champs": names, 
         "links": {"self": BASE + "champions", 
-                  "champ_stats": BASE + "champions/<name>/<stars>/<rank>", 
+                  "base_champ_stats": BASE + "champions/<name>",
+                  "specific_champ_stats": BASE + "champions/<name>/<stars>/<rank>", 
                   "source": "https://auntm.ai/"},
         "status": 200,
         "message": "OK"
         }
-    return response, 200
+    return response_champs, 200
 

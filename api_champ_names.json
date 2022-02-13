@@ -178,6 +178,7 @@
         "hit-monkey": "Hit-Monkey",
         "guardian": "Guardian",
         "sasquatch": "Sasquatch",
+        "dragon-man": "Dragon Man",
         "platinumpool": "Platinumpool",
         "air-walker": "Air-Walker",
         "magneto-house-of-x": "Magneto (House of X)",
@@ -209,7 +210,6 @@
         "peni-parker": "Peni Parker",
         "nimrod": "Nimrod",
         "kitty-pryde": "Kitty Pryde",
-        "summoned-symbiote": "Summoned Symbiote",
         "knull": "Knull",
         "anti-venom": "Anti-Venom",
         "sersi": "Sersi",
@@ -218,5 +218,5 @@
         "toad": "Toad",
         "sauron": "Sauron"
     },
-    "champ_count": 218
+    "champ_count": 217
 }

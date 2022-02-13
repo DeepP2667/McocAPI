@@ -25,9 +25,7 @@ class Stats():
         query = "SELECT champ_id FROM champions WHERE champ_name = %s"
         model.cursor.execute(query, (name,))
         self.champ_id = model.cursor.fetchone()['champ_id']
-        model.close_connection()
 
-        model.open_connection()
         query = """ SELECT 
                     champ_stars,
                     champ_rank, 
@@ -54,9 +52,7 @@ class Stats():
         query = "SELECT champ_id FROM champions WHERE champ_name = %s"
         model.cursor.execute(query, (name,))
         self.champ_id = model.cursor.fetchone()['champ_id']
-        model.close_connection()
 
-        model.open_connection()
         query = """ SELECT 
                     champ_stars, 
                     champ_rank, 
@@ -84,7 +80,6 @@ class Stats():
         query = "SELECT champ_id FROM champions WHERE champ_name = %s"
         model.cursor.execute(query, (name,))
         self.champ_id = model.cursor.fetchone()['champ_id']
-        model.close_connection()
 
         upload_stats = [
             self.champ_id,
@@ -102,7 +97,6 @@ class Stats():
             self.champ_crit_resist, 
         ]
 
-        model.open_connection()
         query = "INSERT INTO champ_stats VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
         model.cursor.execute(query, (upload_stats))
         model.db.commit()

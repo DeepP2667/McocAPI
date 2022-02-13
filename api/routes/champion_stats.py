@@ -43,7 +43,7 @@ def get_specific_stats(name, stars, rank):
     stats = Stats()
     specific_stats = stats.read_specific_champ_stats(champ_name, stars, rank)
     
-    response = {
+    response_stats = {
         "champ_name": champ_name,
         "champ_class": base_champ_stats['champ_class'],
         "champ_offense_rank": base_champ_stats['offense_rank'],
@@ -52,4 +52,4 @@ def get_specific_stats(name, stars, rank):
         "status": 200,
         "message": "OK"
     }
-    return response, 200
+    return response_stats, 200
