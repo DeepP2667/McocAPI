@@ -1,9 +1,8 @@
 from flask import Flask
-from flask_config import SECRET_KEY
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = SECRET_KEY
+    app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
     from .routes.champions import champions
     from .routes.champion_stats import champion_stats
