@@ -1,15 +1,17 @@
-import mysql.connector
-from data_base_config import config
+import psycopg2
+from psycopg2.extras import RealDictCursor
+import os
 
 class Model():
 
     def __init__(self):
+        self.DATABASE_URL = os.environ['DATABASE_URL']
         self.db = None
         self.cursor = None
 
     def open_connection(self):
-        self.db = mysql.connector.connect(**config)
-        self.cursor = self.db.cursor(dictionary=True)
+        self.db = psycopg2.connect(self.DATABASE_URL)
+        self.cursor = self.db.cursor(cursor_factory=RealDictCursor)
         print("Connection opened...")
 
 

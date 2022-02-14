@@ -1,4 +1,4 @@
-import mysql.connector
+import psycopg2
 from ..models.base import model
 
 class Nodes():
@@ -12,10 +12,6 @@ class Nodes():
     def create_node(self):
 
         model.open_connection()
-        query = "ALTER TABLE champions AUTO_INCREMENT=1"
-        model.cursor.execute(query)
-        model.db.commit()
-
         query = "INSERT INTO nodes(node_name, node_info) VALUES(%s, %s)"
         model.cursor.execute(query, (self.node_name, self.node_info))
         model.db.commit()

@@ -1,4 +1,4 @@
-import mysql.connector
+import psycopg2
 from .base import model
 
 class Champions():
@@ -23,11 +23,6 @@ class Champions():
     def create_one_champ(self):
 
         model.open_connection()
-        
-        query = "ALTER TABLE champions AUTO_INCREMENT=1"
-        model.cursor.execute(query)
-        model.db.commit()
-
         query = "INSERT INTO champions(champ_name, champ_class, offense_rank, defense_rank) VALUES(%s, NULL, NULL, NULL)"
         model.cursor.execute(query, (self.champ_name,))
         model.db.commit()

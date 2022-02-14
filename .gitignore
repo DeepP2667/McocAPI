@@ -8,7 +8,7 @@ aunt.json
 
 
 #Configs
-data_base_config.py
+postconfig.py
 flask_config.py
 
 **/__pycache__/

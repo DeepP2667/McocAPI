@@ -1,4 +1,4 @@
-import mysql.connector
+import psycopg2
 from .base import model
 
 class Stats():
