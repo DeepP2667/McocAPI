@@ -14,7 +14,6 @@ class Model():
         self.cursor = self.db.cursor(cursor_factory=RealDictCursor)
         print("Connection opened...")
 
-
     def close_connection(self):
         self.cursor.close()
         self.db.close()

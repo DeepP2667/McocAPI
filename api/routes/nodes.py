@@ -3,7 +3,7 @@ from api.models.nodes import Nodes
 
 nodes = Blueprint('nodes', __name__)
 
-BASE = r'http://127.0.0.1:5000/'
+BASE = r'https://mcocapi.herokuapp.com/'
 
 @nodes.route('/', methods=['GET'])
 def get_nodes():
