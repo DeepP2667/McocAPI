@@ -1,3 +1,7 @@
+# No longer working on this repo. New repo can be found here:
+https://github.com/Rexians/uma
+
+
 # McocAPI (Unofficial)
 
 An unofficial API for the game Marvel Conetest of Champions
